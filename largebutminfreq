@@ -1,0 +1,30 @@
+class Solution {
+    // Function to find largest number with minimum frequency
+    public static int LargButMinFreq(int arr[], int n) {
+        // Your code here
+        //creating a hashmap
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        
+        // Populating the hashmap with number and its frequency
+        for (int num : arr) {
+            hm.put(num, hm.getOrDefault(num, 0) + 1);
+        }
+        
+        // Finding the minimum frequency
+        int minFreq = Integer.MAX_VALUE;
+        for (Map.Entry<Integer, Integer> entry : hm.entrySet()) {
+            minFreq = Math.min(minFreq, entry.getValue());
+        }
+        
+        int largestNum = Integer.MIN_VALUE;
+        
+        // Finding the largest number with the minimum frequency
+        for (Map.Entry<Integer, Integer> entry : hm.entrySet()) {
+            if (entry.getValue() == minFreq) {
+                largestNum = Math.max(largestNum, entry.getKey());
+            }
+        }
+        
+        return largestNum;
+    }
+}
