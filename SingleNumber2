@@ -1,0 +1,15 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);int ans=0;
+        for(int i=0; i<nums.length; i++){
+            
+            if((i+1<nums.length)&& (i+2<nums.length)&&(nums[i]==nums[i+1])&&(nums[i+1]==nums[i+2]) ){
+                i=i+2;
+                continue;
+            }
+            ans=nums[i];
+            break;
+        }
+        return ans;
+    }
+}
